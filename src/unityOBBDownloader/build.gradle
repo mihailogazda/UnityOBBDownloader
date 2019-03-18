@@ -43,6 +43,13 @@ android {
 	}
 }
 
+dependencies {	
+	
+	implementation 'com.android.support:support-v13:28.0.0'
+	implementation 'com.android.support:appcompat-v7:28.0.0'
+    
+}
+
 task clearAARRelease(type: Delete) {
     delete 'release/unityOBBDownloader.aar'
 }

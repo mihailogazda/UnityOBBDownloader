@@ -306,7 +306,7 @@ public class Helpers {
         return canWrite;
     }
 
-    /**
+/**
      * Converts download states that are returned by the
      * {@link IDownloaderClient#onDownloadStateChanged} callback into usable strings. This is useful
      * if using the state strings built into the library to display user messages.
@@ -356,7 +356,7 @@ public class Helpers {
                 return getStringResource(ctx, "state_unknown");
         }
     }
-
+	
 	static public int getStringResource(Context ctx, String name) {
 		return ctx.getResources().getIdentifier(name, "string", ctx.getPackageName());
 	}
@@ -366,4 +366,6 @@ public class Helpers {
 	static public int getIdResource(Context ctx, String name) {
 		return ctx.getResources().getIdentifier(name, "id", ctx.getPackageName());
 	}
+    
+
 }
