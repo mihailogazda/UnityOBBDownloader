@@ -22,7 +22,7 @@ allprojects {
 
 android {
     compileSdkVersion 28
-    buildToolsVersion "28.0.0"
+    buildToolsVersion "28.0.3"
 
     defaultConfig {
         minSdkVersion 11
@@ -35,4 +35,30 @@ android {
             proguardFiles 'proguard.cfg'
         }
     }
+	
+	android {
+      lintOptions {
+          abortOnError false
+      }
+	}
 }
+
+task clearAARRelease(type: Delete) {
+    delete 'release/unityOBBDownloader.aar'
+}
+
+task makeAARRelease(type: Copy) {
+    from('build/outputs/aar')
+    into('release/')
+    include('unityOBBDownloader-release.aar')
+    rename ('unityOBBDownloader-release.aar', 'unityOBBDownloader.aar')
+}
+
+afterEvaluate {
+    generateReleaseBuildConfig.enabled = false
+    generateDebugBuildConfig.enabled = false
+}
+
+makeAARRelease.dependsOn(clearAARRelease, build)
+
+
